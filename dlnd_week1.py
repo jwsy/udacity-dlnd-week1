@@ -48,9 +48,9 @@ val_features, val_targets = features[-60*24:], targets[-60*24:]
 
 
 ### Set the hyperparameters here ###
-epochs = 100
-learning_rate = 0.1
-hidden_nodes = 2
+epochs = 1500
+learning_rate = 0.01
+hidden_nodes = 15
 output_nodes = 1
 
 N_i = train_features.shape[1]

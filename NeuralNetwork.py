@@ -1,7 +1,4 @@
 import numpy as np
-import pandas as pd
-import matplotlib.pyplot as plt
-import sys
 
 class NeuralNetwork(object):
 
@@ -52,8 +49,6 @@ class NeuralNetwork(object):
         error = targets - final_outputs
         # error gradient of output_error = (y-y_hat) f'(h_k)
         output_error = error # since this is a scalar
-        # hidden_error = output_error * W_j * f'(h_j)
-        hidden_error = output_error * self.weights_hidden_to_output * hidden_outputs * (1-hidden_outputs)
 
         # error at output layer
         # del_o = (y_k - yhat_k) * f'(h_k) # since the activation is just the identity
@@ -62,7 +57,7 @@ class NeuralNetwork(object):
 
         # error at hidden layer j
         # TODO had to take the transpose of the calculated gradient
-        del_err_hidden = np.dot(self.weights_hidden_to_output.T, output_error) * (hidden_outputs * (1-hidden_outputs))
+        del_err_hidden = np.dot(self.weights_hidden_to_output.T, output_error) # * (hidden_outputs * (1-hidden_outputs))
 
         # TODO this was weird dimensionaly as well
         delta_w_h_o = self.lr * del_err_output * hidden_outputs.T
